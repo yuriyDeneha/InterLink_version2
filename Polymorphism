@@ -30,7 +30,7 @@ class Box {
 		}
 	}
 }
-public class Pplymorphism
+public class Polymorphism
 {
 	public static void main(String[] args)
 	{
