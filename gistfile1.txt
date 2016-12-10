@@ -1,0 +1,46 @@
+import java.util.ArrayList; 
+import java.util.List; 
+
+public class Test
+{
+	public static void main(String[] args)
+	{
+		Box box = new Box();		
+		Shape t = new Triangle();
+		Shape c = new Circle();
+		Shape s = new Square();				
+		box.Add(t);
+		box.Add(c);
+		box.Add(s);
+		box.DrawAll();
+	}
+}
+interface Shape{
+     public void draw();
+}
+class Triangle implements Shape{
+	public void draw(){
+		System.out.println( "Drowing triangle...");
+	}
+}
+class Circle implements Shape{
+	public void draw(){
+		System.out.println( "Drowing circle...");
+	}
+}
+class Square implements Shape{
+	public  void draw(){
+		System.out.println( "Drowing square...");
+	}
+}
+class Box {
+	public List<Shape> box = new ArrayList<Shape>();
+	public void Add(Shape shape){
+		box.add(shape);
+	}
+	public void DrawAll(){
+		for(Shape shape: box) {
+			shape.draw();
+		}
+	}
+}
