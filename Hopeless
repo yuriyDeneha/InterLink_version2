@@ -68,5 +68,10 @@ public class Polymorphism
 		box.Add(c);
 		box.Add(s);
 		box.DesribeAll();
+	/* Output
+	Cold: treatment- Hot tea; action - Coughing...
+	LungsCancer: treatment- Surgery; action - Weep...
+ 	BrainCancer: treatment- Prays; action - Praying...
+	*/
 	}
 }
