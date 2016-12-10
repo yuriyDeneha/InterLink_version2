@@ -9,7 +9,7 @@ abstract class Infection implements Illness{
 	public abstract String cough();
 }
 abstract class Cancer implements Illness{
-	public abstract String cry();
+	public abstract String hope();
 }
 class Cold extends Infection{
   public String treatment(){
@@ -26,22 +26,22 @@ class LungsCancer extends Cancer{
   public String treatment(){
    	return "Surgery";
   }	
-  public String cry(){
+  public String hope(){
    	return"Weep...";
   }
   public void describe(){
-    System.out.println( "LungsCancer: treatment- " + this.treatment() + "; action - " + this.cry());
+    System.out.println( "LungsCancer: treatment- " + this.treatment() + "; action - " + this.hope());
   }    
 }
 class BrainCancer extends Cancer{
   public String treatment(){
    	return "Prays";
   }	
-  public String cry(){
+  public String hope(){
    	return "Praying...";
   }
   public void describe(){
-    System.out.println( "BrainCancer: treatment- " + this.treatment() + "; action - " + this.cry());
+    System.out.println( "BrainCancer: treatment- " + this.treatment() + "; action - " + this.hope());
   }    
 }
 class Box {
