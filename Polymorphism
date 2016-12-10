@@ -8,7 +8,8 @@ public class Test
 		Box box = new Box();		
 		Shape t = new Triangle();
 		Shape c = new Circle();
-		Shape s = new Square();				
+		Shape s = new Square();	
+			
 		box.Add(t);
 		box.Add(c);
 		box.Add(s);
