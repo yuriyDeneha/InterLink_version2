@@ -9,7 +9,7 @@ Appendicitis: symptoms - Stomachache, Intense pain, ; treatment- surgery
 Symptoms - Cough, Intense pain, Blood in urine, Hard breathing, ; and- You've lungsCancer and its incurable . Only treatment is prays
 */
 
-public class Polymorphism
+public class OOPtask
 {
 	public static void main(String[] args)
 	{
