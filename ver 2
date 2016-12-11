@@ -32,6 +32,7 @@ class Cold extends IsCurable{
   }    
 }
 class Appendicitis extends IsCurable{
+  symptoms = new ArrayList<Illness>();
   public String treatment(){
    	return "Surgery";
   }	
@@ -46,24 +47,28 @@ class Appendicitis extends IsCurable{
     System.out.println( "Appendicitis: symptoms - " + Cold.listSymptoms() + "; treatment- " + Cold.treatment());
   }    
 }
-class BrainCancer extends Cancer{
-  public String treatment(){
-   	return "Prays";
-  }	
-  public String hope(){
-   	return "Praying...";
-  }
-  public void describe(){
-    System.out.println( "BrainCancer: treatment- " + this.treatment() + "; action - " + this.hope());
-  }    
+class LungsCancer extends IsIncurable{
+    symptoms = new ArrayList<Illness>();
+  	inform = "You've lungsCancer and its incurable ";
+    public void listSymptoms(){
+    	symptoms.add("Cough");
+    	symptoms.add("Intense pain");
+        symptoms.add("Blood in urine");
+        symptoms.add("Hard breathing");
+   		for(String s: symptoms) {
+			System.out.print(s + ", ");
+		}
+  	public void informFamily(){
+  		System.out.println( "Symptoms - " + LungsCancer.listSymptoms() + "; and- " + LungsCancer.inform());
+	} 
 }
-class Box {
-	public List<Illness> box = new ArrayList<Illness>();
-	public void Add(Illness ill){
-		box.add(ill);
+class Hospital {
+	public List<Illness> ills = new ArrayList<Illness>();
+	public void Add(Illness newIll){
+		ills.add(newIll);
 	}
 	public void DesribeAll(){
-		for(Illness ill: box) {
+		for(Illness ill: ills) {
 			ill.describe();
 		}
 	}
@@ -72,19 +77,14 @@ public class Polymorphism
 {
 	public static void main(String[] args)
 	{
-		Box box = new Box();		
-		Illness t = new Cold();
-		Illness c = new LungsCancer();
-		Illness s = new BrainCancer();	
+		Hospital hospital = new Hospital();		
+		Illness c = new Cold();
+		Illness l = new LungsCancer();
+		Illness a = new Appendicitis();	
 			
-		box.Add(t);
-		box.Add(c);
-		box.Add(s);
-		box.DesribeAll();
-	/* Output
-	Cold: treatment- Hot tea; action - Coughing...
-	LungsCancer: treatment- Surgery; action - Weep...
- 	BrainCancer: treatment- Prays; action - Praying...
-	*/
+		hospital.Add(t);
+		hospital.Add(c);
+		hospital.Add(s);
+		hospital.DesribeAll();
 	}
 }
