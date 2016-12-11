@@ -14,35 +14,36 @@ abstract class IsIncurable implements Illness{
     protected String inform;
     protected List<String> symptoms;
     abstract void informFamily();
-}  
-abstract class Cancer implements Illness{
-
-}
+} 
 class Cold extends IsCurable{
   symptoms = new ArrayList<Illness>();
-  public void treatment(){
+  public String treatment(){
    	return "Hot tea and pills";
   }	
-   public String listSymptoms(){
+  public void listSymptoms(){
      symptoms.add("Cough");
      symptoms.add("Fever");
-   	 for(String s: box) {
-			ill.describe();
+   	 for(String s: symptoms) {
+			System.out.print(s + ", ");
 	 }
   }
   public void describe(){
-    System.out.println( "Cold: treatment- " + this.treatment() + "; action - " + this.cough());
+    System.out.println( "Cold: symptoms - " + Cold.listSymptoms() + "; treatment- " + Cold.treatment());
   }    
 }
-class LungsCancer extends Cancer{
+class Appendicitis extends IsCurable{
   public String treatment(){
    	return "Surgery";
   }	
-  public String hope(){
-   	return"Weep...";
+  public void listSymptoms(){
+     symptoms.add("Stomachache");
+     symptoms.add("Intense pain");
+   	 for(String s: symptoms) {
+			System.out.print(s + ", ");
+	 }
   }
   public void describe(){
-    System.out.println( "LungsCancer: treatment- " + this.treatment() + "; action - " + this.hope());
+    System.out.println( "Appendicitis: symptoms - " + Cold.listSymptoms() + "; treatment- " + Cold.treatment());
   }    
 }
 class BrainCancer extends Cancer{
