@@ -1,14 +1,50 @@
 import java.util.ArrayList; 
 import java.util.List; 
 
-interface Illness{
+/*--------------- Output information------------
+Cold: symptoms - Cough, Fever, ; treatment- Hot tea and pills
+
+Appendicitis: symptoms - Stomachache, Intense pain, ; treatment- surgery
+
+Symptoms - Cough, Intense pain, Blood in urine, Hard breathing, ; and- You've lungsCancer and its incurable . Only treatment is prays
+*/
+
+public class Polymorphism
+{
+	public static void main(String[] args)
+	{
+		Hospital hospital = new Hospital();		
+		Illness c = new Cold();
+		Illness l = new LungsCancer();
+		Illness a = new Appendicitis();	
+			
+		hospital.Add(c);
+		hospital.Add(a);
+		hospital.Add(l);
+		hospital.DesribeAll();
+	}
+}
+
+class Hospital {
+	public List<Illness> ills = new ArrayList<Illness>();
+	public void Add(Illness newIll){
+		ills.add(newIll);
+	}
+	public void DesribeAll(){
+		for(Illness ill: ills) {
+			ill.describe();
+		}
+	}
+}
+
+interface Illness{                
     public String listSymptoms();
   	public void describe();
+  	public  String treatment();
 }
 abstract class IsCurable implements Illness{
     protected String treatment;
     protected List<String> symptoms;
-	public abstract String treatment();
 }  
 abstract class IsIncurable implements Illness{
     protected String inform;
@@ -30,9 +66,8 @@ class Cold extends IsCurable{
 	 }
     return list;
   }
-  @Override
   public  void describe(){
-    System.out.println("Cold: symptoms - " + this.listSymptoms() + "; treatment- " + this.treatment());
+    System.out.println("Cold: symptoms - " + this.listSymptoms() + "; treatment- " + this.treatment()+ "\n");
   }    
 }
 class Appendicitis extends IsCurable{
@@ -40,7 +75,7 @@ class Appendicitis extends IsCurable{
 		this.symptoms = new ArrayList<String>();
 	}
   public String treatment(){
-   	return "Surgery";
+   	return "surgery";
   }	
   public String listSymptoms(){
     String list = new String();
@@ -52,7 +87,7 @@ class Appendicitis extends IsCurable{
     return list;
   }
   public void describe(){
-    System.out.println( "Appendicitis: symptoms - " + this.listSymptoms() + "; treatment- " + this.treatment());
+    System.out.println( "Appendicitis: symptoms - " + this.listSymptoms() + "; treatment- " + this.treatment()+ "\n");
   }    
 }
 class LungsCancer extends IsIncurable{
@@ -60,7 +95,9 @@ class LungsCancer extends IsIncurable{
 		this.symptoms = new ArrayList<String>();
 		this.inform = "You've lungsCancer and its incurable ";
 	}
-  	
+  	public String treatment(){
+     	return "prays";
+  	}	
     public String listSymptoms(){
       String list = new String();
     	symptoms.add("Cough");
@@ -73,32 +110,6 @@ class LungsCancer extends IsIncurable{
       return list;
     }
   	public void describe(){
-  		System.out.println("Symptoms - " + this.listSymptoms() + "; and- " + this.inform);
+  		System.out.println("Symptoms - " + this.listSymptoms() + "; and- " + this.inform + ". Only treatment is "  + this.treatment() + "\n");
 	} 
-}
-class Hospital {
-	public List<Illness> ills = new ArrayList<Illness>();
-	public void Add(Illness newIll){
-		ills.add(newIll);
-	}
-	public void DesribeAll(){
-		for(Illness ill: ills) {
-			ill.describe();
-		}
-	}
-}
-public class Polymorphism
-{
-	public static void main(String[] args)
-	{
-		Hospital hospital = new Hospital();		
-		Illness c = new Cold();
-		Illness l = new LungsCancer();
-		Illness a = new Appendicitis();	
-			
-		hospital.Add(c);
-		hospital.Add(l);
-		hospital.Add(a);
-		hospital.DesribeAll();
-	}
 }
